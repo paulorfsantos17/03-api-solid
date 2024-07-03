@@ -53,6 +53,6 @@ describe('Register Use Case', () => {
       password: 'password123',
     })
 
-    await expect(user.id).toEqual(expect.any(String))
+    expect(user.id).toEqual(expect.any(String))
   })
 })
