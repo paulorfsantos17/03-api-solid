@@ -41,4 +41,19 @@ export class InMemoryCheckInRepository implements CheckInsRepository {
 
     return checkInOnSameDate
   }
+
+  async findManyByUserId(
+    userId: string,
+    page: number,
+  ): Promise<CheckIn[] | null> {
+    const checkIns: CheckIn[] = this.items
+      .filter((checkIn) => checkIn.user_id === userId)
+      .slice((page - 1) * 20, page * 20)
+
+    if (!checkIns) {
+      return null
+    }
+
+    return checkIns
+  }
 }
