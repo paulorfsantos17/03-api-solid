@@ -6,7 +6,7 @@ interface GetUserMetricsRequest {
 interface GetUserMetricsResponse {
   checkInsCount: number
 }
-export class GetUserMetrics {
+export class GetUserMetricsUseCase {
   constructor(private checkInsRepository: CheckInsRepository) {
     this.checkInsRepository = checkInsRepository
   }
