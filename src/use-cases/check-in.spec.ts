@@ -5,6 +5,7 @@ import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-
 import { Decimal } from '@prisma/client/runtime/library'
 import { MaxDistanceError } from './errors/max-distance-error'
 import { MaxNumberOfCheckInsError } from './errors/max-number-of-check-ins-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let checkInRepository: InMemoryCheckInRepository
 let gymsRepository: InMemoryGymsRepository
@@ -103,5 +104,15 @@ describe('Check-In Use Case', () => {
         userLongitude: -45.7762134,
       }),
     ).rejects.toBeInstanceOf(MaxDistanceError)
+  })
+  it('should not be able to check in with inexistent gym', async () => {
+    await expect(() =>
+      sut.execute({
+        gymId: 'gym-02',
+        userId: 'user-01',
+        userLatitude: -22.3685618,
+        userLongitude: -45.7762134,
+      }),
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })
