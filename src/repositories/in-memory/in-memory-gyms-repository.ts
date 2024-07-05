@@ -51,8 +51,6 @@ export class InMemoryGymsRepository implements GymsRepository {
         },
       )
 
-      console.log(distance)
-
       const MAX_DISTANCE_IN_KILOMETERS = 10 // 10km
 
       return distance <= MAX_DISTANCE_IN_KILOMETERS
