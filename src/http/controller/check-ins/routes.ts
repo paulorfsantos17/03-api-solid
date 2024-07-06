@@ -7,10 +7,10 @@ import { metrics } from './metrics'
 export async function checkInsRoutes(app: FastifyInstance) {
   app.addHook('onRequest', verifyJwt)
 
-  app.post('gyms/:gymId/check-ins', create)
+  app.post('/gyms/:gymId/check-ins', create)
 
-  app.get('check-ins/metrics', metrics)
-  app.get('check-ins/history', metrics)
+  app.get('/check-ins/metrics', metrics)
+  app.get('/check-ins/history', metrics)
 
-  app.patch('check-ins/:checkInId/validate', validate)
+  app.patch('/check-ins/:checkInId/validate', validate)
 }
