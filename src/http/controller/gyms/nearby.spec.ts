@@ -45,8 +45,6 @@ describe('Nearby Gyms (e2e)', () => {
       })
       .send()
 
-    console.log('🚀 ~ it ~ response:', response.body)
-
     expect(response.status).toBe(200)
     expect(response.body.gyms).toHaveLength(1)
     // expect(response.body.gyms).toEqual([
