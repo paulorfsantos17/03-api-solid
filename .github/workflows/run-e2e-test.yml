@@ -27,6 +27,8 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install
+      - run: --filter=@issue-prisma-in-pnpm-workspace/sample build
+      - run: --filter=@issue-prisma-in-pnpm-workspace/sample start
 
       - run: pnpm test:e2e
         env:
