@@ -27,7 +27,9 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install
-
+      
+      - name: Prisma Generator
+        run: pnpm prisma generate
 
       - run: pnpm test:e2e
         env:
