@@ -11,10 +11,10 @@ jobs:
         image: bitnami/postgresql
         ports:
           - 5432:5432
-        environment:
-          POSTGRESQL_USERNAME:docker
-          POSTGRESQL_PASSWORDdocker
-          POSTGRESQL_DATABASE=apisolid
+        env:
+          POSTGRESQL_USERNAME : docker
+          POSTGRESQL_PASSWORD : docker
+          POSTGRESQL_DATABASE : apisolid
 
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +27,9 @@ jobs:
           cache: 'pnpm'
 
       - run: pnpm install
+      
+      - name: Prisma Generator
+        run: pnpm prisma generate
 
       - run: pnpm test:e2e
         env:
